@@ -37,7 +37,7 @@ const TaskList = ({ singleTask, index }) => {
   // status part
   const handleComplete = (id) => {
     fetch(`http://localhost:5000/task/${id}`, {
-      method: "PUT",
+      method: "PATCH",
     })
       .then((res) => res.json())
       .then((data) => {
@@ -51,8 +51,12 @@ const TaskList = ({ singleTask, index }) => {
   return (
     <tr>
       <td>{index + 1}.</td>
-      <td className={status === "complete" && "line-through"}>{task}</td>
-      <td className={status === "complete" && "line-through"}>{description}</td>
+      <td className={status === "complete" ? "line-through" : "none"}>
+        {task}
+      </td>
+      <td className={status === "complete" ? "line-through" : "none"}>
+        {description}
+      </td>
       <td>
         <button
           disabled={status === "complete"}

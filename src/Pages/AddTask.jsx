@@ -1,14 +1,18 @@
 import Swal from "sweetalert2";
 import useTask from "../Hooks/useTask";
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 
-const InputForm = () => {
+const AddTask = () => {
+  const { user } = useContext(AuthContext);
   const [, refetch] = useTask();
 
   const handlePost = (event) => {
     event.preventDefault();
     const task = event.target.task.value;
     const description = event.target.description.value;
-    const data = { task, description };
+    const email = user?.email;
+    const data = { task, description, email };
     const url = `http://localhost:5000/task`;
     fetch(url, {
       method: "POST",
@@ -20,8 +24,8 @@ const InputForm = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          refetch();
           Swal.fire("Good job!", "Task Added Successfully!", "success");
+          refetch();
           event.target.reset();
         }
       });
@@ -57,4 +61,4 @@ const InputForm = () => {
   );
 };
 
-export default InputForm;
+export default AddTask;
