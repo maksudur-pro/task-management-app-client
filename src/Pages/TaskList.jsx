@@ -2,6 +2,7 @@ import React from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import useTask from "../Hooks/useTask";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const TaskList = ({ singleTask, index }) => {
   const [, refetch] = useTask();
@@ -70,9 +71,11 @@ const TaskList = ({ singleTask, index }) => {
         </button>
       </td>
       <td>
-        <button className="btn btn-info btn-sm hover:text-white">
-          <FaEdit />
-        </button>
+        <Link to={`/update/${_id}`}>
+          <button className="btn btn-info btn-sm hover:text-white">
+            <FaEdit />
+          </button>
+        </Link>
       </td>
       <td>
         <button
