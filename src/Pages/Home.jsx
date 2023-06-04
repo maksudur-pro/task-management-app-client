@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import InputForm from "./InputForm";
+import AddTask from "./AddTask";
 import TaskList from "./TaskList";
 import useTask from "../Hooks/useTask";
 
@@ -35,7 +35,7 @@ const Home = () => {
           </div>
         </div>
         <div className="lg:w-2/5">
-          <InputForm></InputForm>
+          <AddTask></AddTask>
         </div>
       </div>
     </div>

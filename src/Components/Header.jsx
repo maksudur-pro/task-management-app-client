@@ -27,11 +27,16 @@ const Header = () => {
             <li>
               <Link to="/">Homepage</Link>
             </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
           </ul>
         </div>
       </div>
       <div className="navbar-center">
-        <span className="text-3xl font-bold">Task App</span>
+        <Link to="/" className="text-3xl font-bold">
+          Task App
+        </Link>
       </div>
       <div className="navbar-end">
         <button className="btn btn-ghost btn-circle">
