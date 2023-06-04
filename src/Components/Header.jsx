@@ -31,7 +31,7 @@ const Header = () => {
         </div>
       </div>
       <div className="navbar-center">
-        <span className="text-3xl font-bold">Task Management App</span>
+        <span className="text-3xl font-bold">Task App</span>
       </div>
       <div className="navbar-end">
         <button className="btn btn-ghost btn-circle">
