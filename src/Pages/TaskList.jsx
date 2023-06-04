@@ -7,6 +7,34 @@ const TaskList = ({ singleTask, index }) => {
   const [, refetch] = useTask();
   const { _id, task, description, status } = singleTask || {};
 
+  // delete part
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/task/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Your task has been deleted.", "success");
+              refetch();
+            }
+          });
+      }
+    });
+  };
+
+  // status part
   const handleComplete = (id) => {
     fetch(`http://localhost:5000/task/${id}`, {
       method: "PUT",
@@ -43,7 +71,9 @@ const TaskList = ({ singleTask, index }) => {
         </button>
       </td>
       <td>
-        <button className="btn btn-ghost btn-sm bg-red-600 text-white hover:text-black">
+        <button
+          onClick={() => handleDelete(_id)}
+          className="btn btn-ghost btn-sm bg-red-600 text-white hover:text-black">
           <FaTrashAlt />
         </button>
       </td>

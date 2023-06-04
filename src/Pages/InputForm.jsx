@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 import useTask from "../Hooks/useTask";
 
 const InputForm = () => {
-  const [tasks, refetch] = useTask();
+  const [, refetch] = useTask();
 
   const handlePost = (event) => {
     event.preventDefault();
