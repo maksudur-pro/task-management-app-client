@@ -1,8 +1,8 @@
-import React, { useState } from "react";
 import Swal from "sweetalert2";
+import useTask from "../Hooks/useTask";
 
 const InputForm = () => {
-  const [isReload, setIsReload] = useState(false);
+  const [tasks, refetch] = useTask();
 
   const handlePost = (event) => {
     event.preventDefault();
@@ -18,10 +18,12 @@ const InputForm = () => {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((result) => {
-        Swal.fire("Good job!", "Task Added Successfully!", "success");
-        setIsReload(!isReload);
-        event.target.reset();
+      .then((data) => {
+        if (data.insertedId) {
+          refetch();
+          Swal.fire("Good job!", "Task Added Successfully!", "success");
+          event.target.reset();
+        }
       });
   };
 

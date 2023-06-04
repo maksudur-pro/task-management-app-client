@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import InputForm from "./InputForm";
 import TaskList from "./TaskList";
+import useTask from "../Hooks/useTask";
 
 const Home = () => {
+  const [tasks] = useTask();
+
   return (
     <div className="mx-auto">
       <div className="flex lg:flex-row flex-col-reverse">
@@ -19,7 +22,15 @@ const Home = () => {
                   <th>Delete</th>
                 </tr>
               </thead>
-              <tbody></tbody>
+              <tbody>
+                {tasks.map((singleTask, index) => (
+                  <TaskList
+                    key={singleTask._id}
+                    singleTask={singleTask}
+                    index={index}
+                  />
+                ))}
+              </tbody>
             </table>
           </div>
         </div>
