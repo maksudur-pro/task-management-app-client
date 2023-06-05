@@ -13,7 +13,7 @@ const AddTask = () => {
     const description = event.target.description.value;
     const email = user?.email;
     const data = { task, description, email };
-    const url = `http://localhost:5000/task`;
+    const url = `https://task-management-app-server-maksudur-pro.vercel.app/task`;
     fetch(url, {
       method: "POST",
       headers: {

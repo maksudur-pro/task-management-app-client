@@ -21,9 +21,12 @@ const TaskList = ({ singleTask, index }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/task/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://task-management-app-server-maksudur-pro.vercel.app/task/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
@@ -37,9 +40,12 @@ const TaskList = ({ singleTask, index }) => {
 
   // status part
   const handleComplete = (id) => {
-    fetch(`http://localhost:5000/task/${id}`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://task-management-app-server-maksudur-pro.vercel.app/task/${id}`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {

@@ -37,9 +37,6 @@ const Header = () => {
             <li>
               <Link to="/">Home</Link>
             </li>
-            <li>
-              <Link to="/mytask">My Task</Link>
-            </li>
             {user ? (
               <li>
                 <button onClick={handleLogout}>Logout</button>

@@ -9,7 +9,7 @@ const useTask = () => {
     enabled: !loading,
     queryFn: async () => {
       const response = await fetch(
-        `http://localhost:5000/tasks?email=${user?.email}`
+        `https://task-management-app-server-maksudur-pro.vercel.app/tasks?email=${user?.email}`
       );
       return response.json();
     },

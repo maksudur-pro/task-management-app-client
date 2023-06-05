@@ -24,7 +24,9 @@ export const router = createBrowserRouter([
         path: "/update/:id",
         element: <UpdateTask></UpdateTask>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/tasks/${params.id}`),
+          fetch(
+            `https://task-management-app-server-maksudur-pro.vercel.app/tasks/${params.id}`
+          ),
       },
       {
         path: "login",

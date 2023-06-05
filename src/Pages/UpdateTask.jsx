@@ -14,7 +14,7 @@ const UpdateTask = () => {
     const task = event.target.task.value;
     const description = event.target.description.value;
     const data = { task, description };
-    const url = `http://localhost:5000/update/${_id}`;
+    const url = `https://task-management-app-server-maksudur-pro.vercel.app/update/${_id}`;
     fetch(url, {
       method: "PUT",
       headers: {
