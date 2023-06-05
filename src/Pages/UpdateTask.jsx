@@ -3,7 +3,6 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import updateAni from "../../src/assets/update.json";
 import Swal from "sweetalert2";
-import useTask from "../Hooks/useTask";
 
 const UpdateTask = () => {
   const data = useLoaderData();
